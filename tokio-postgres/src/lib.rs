@@ -116,9 +116,7 @@
 //! | `with-uuid-1` | Enable support for the `uuid` crate. | [uuid](https://crates.io/crates/uuid) 1.0 | no |
 //! | `with-time-0_2` | Enable support for the 0.2 version of the `time` crate. | [time](https://crates.io/crates/time/0.2.0) 0.2 | no |
 //! | `with-time-0_3` | Enable support for the 0.3 version of the `time` crate. | [time](https://crates.io/crates/time/0.3.0) 0.3 | no |
-#![doc(html_root_url = "https://docs.rs/tokio-postgres/0.7")]
 #![warn(rust_2018_idioms, clippy::all)]
-
 use std::sync::Arc;
 
 pub use crate::cancel_token::CancelToken;
@@ -132,7 +130,7 @@ pub use crate::error::Error;
 pub use crate::generic_client::GenericClient;
 pub use crate::generic_result::GenericResult;
 pub use crate::portal::Portal;
-pub use crate::query::{RowStream, ResultStream};
+pub use crate::query::{ResultStream, RowStream};
 pub use crate::row::{Row, SimpleQueryRow};
 pub use crate::simple_query::SimpleQueryStream;
 #[cfg(feature = "runtime")]
@@ -169,6 +167,7 @@ mod copy_out;
 pub mod error;
 mod generic_client;
 pub mod generic_result;
+#[cfg(not(target_arch = "wasm32"))]
 mod keepalive;
 mod maybe_tls_stream;
 mod portal;
