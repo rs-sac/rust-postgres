@@ -593,6 +593,11 @@ impl DataRowBody {
     pub fn buffer(&self) -> &[u8] {
         &self.storage
     }
+
+    #[inline]
+    pub fn buffer_bytes(&self) -> &Bytes {
+        &self.storage
+    }
 }
 
 pub struct DataRowRanges<'a> {
